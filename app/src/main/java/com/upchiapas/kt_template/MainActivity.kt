@@ -1,5 +1,7 @@
 package com.upchiapas.kt_template
 
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.ui.text.input.KeyboardType
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -49,7 +51,8 @@ fun CalculadoraScreen(){
             value = num1Texto,
             onValueChange = { num1Texto = it },
             placeholder = { Text("Primer Número") },
-            singleLine = true
+            singleLine = true,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal)
         )
 
         Spacer(modifier = Modifier.height(12.dp))
@@ -58,7 +61,8 @@ fun CalculadoraScreen(){
             value = num2Texto,
             onValueChange = { num2Texto = it },
             placeholder = { Text("Segundo Numero") },
-            singleLine = true
+            singleLine = true,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal)
         )
 
         Spacer(modifier = Modifier.height(20.dp))
