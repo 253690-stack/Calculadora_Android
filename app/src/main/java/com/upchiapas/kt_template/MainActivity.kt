@@ -57,7 +57,7 @@ fun CalculadoraScreen(){
         TextField(
             value = num2Texto,
             onValueChange = { num2Texto = it },
-            placeholder = { Text("Segundo Número") },
+            placeholder = { Text("Segundo Numero") },
             singleLine = true
         )
 
