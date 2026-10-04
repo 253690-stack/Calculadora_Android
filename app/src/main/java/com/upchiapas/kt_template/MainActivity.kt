@@ -1,10 +1,16 @@
 package com.upchiapas.kt_template
 
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.TextStyle // Para cambiar diseño de textfield
+import androidx.compose.ui.text.font.FontFamily //Tipos de tipografía
+import androidx.compose.ui.text.font.FontWeight // Tamaño de letra
+import androidx.compose.material3.TextFieldDefaults // Algo de jalar los default
+import androidx.compose.foundation.text.KeyboardOptions // Teclado Numerico
+import androidx.compose.ui.text.input.KeyboardType //Teclado
+import androidx.compose.ui.graphics.Color // Colores
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.ColorRes
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.material3.*
@@ -43,7 +49,7 @@ fun CalculadoraScreen(){
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(text = "Calculadora chingona", fontSize = 24.sp)
+        Text(text = "Calculadora chingona", fontSize = 24.sp, color = Color.Red)
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -62,7 +68,19 @@ fun CalculadoraScreen(){
             onValueChange = { num2Texto = it },
             placeholder = { Text("Segundo Numero") },
             singleLine = true,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal)
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
+            textStyle = TextStyle(
+                fontSize = 22.sp, // Tamaño del texto
+                fontWeight = FontWeight.SemiBold, // Grosor
+                fontFamily = FontFamily.Cursive, // Tipografía
+                color = Color(0xFF0D47A1) // Color de la letra
+            ),
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = Color(0xFFE3F2FD), // Pa cuando tenga cursor dentro
+                unfocusedContainerColor = Color(0xFFF5F5F5), // fondo en reposo
+                cursorColor = Color(0xFF0D47A1), // Color de la barrita
+                focusedIndicatorColor = Color(0xFF0D47A1),
+            )
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -73,26 +91,38 @@ fun CalculadoraScreen(){
 
         Button(onClick = {
             resultadoTexto = manager.sumar(num1Texto, num2Texto)
-        }) {
-            Text("+")
+        },
+            modifier = Modifier.size(56.dp),
+            colors = ButtonDefaults.buttonColors(contentColor = Color.Black, containerColor = Color.Cyan)
+        ) {
+            Text(text = "+", fontSize = 20.sp)
         }
 
         Button(onClick = {
             resultadoTexto = manager.restar(num1Texto, num2Texto)
-        }) {
-            Text("-")
+        },
+            modifier = Modifier.size(56.dp),
+            colors = ButtonDefaults.buttonColors(contentColor = Color.Black, containerColor = Color.Cyan)
+        ) {
+            Text(text = "-", fontSize = 24.sp)
         }
 
         Button(onClick = {
             resultadoTexto = manager.multiplicar(num1Texto, num2Texto)
-        }) {
-            Text("*")
+        },
+            modifier = Modifier.size(56.dp),
+            colors = ButtonDefaults.buttonColors(contentColor = Color.Black, containerColor = Color.Cyan)
+        ) {
+            Text(text = "*", fontSize = 17.sp)
         }
 
         Button(onClick = {
             resultadoTexto = manager.dividir(num1Texto, num2Texto)
-        }) {
-            Text("/")
+        },
+            modifier = Modifier.size(56.dp),
+            colors = ButtonDefaults.buttonColors(contentColor = Color.Black, containerColor = Color.Cyan)
+        ) {
+            Text(text = "/", fontSize = 17.sp)
         }
     }
         Spacer(modifier = Modifier.height(25.dp))
