@@ -42,7 +42,7 @@ class CalculadoraManager {
                 "Resultado: ${n1 / n2}"
             }
         } else {
-            "Ingresa números válidos"
+            "Ingresa números validos"
         }
     }
     }
